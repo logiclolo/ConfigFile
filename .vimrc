@@ -271,7 +271,8 @@ function! UseAwesomeCscope()
 	try
 		"set tags+=$HOME/horus/apps/tags
 		exe "cs add " . l:srcdir . "cscope.out " . l:srcdir
-		"exe "cs add $HOME/cscope_ctag/Horus/cscope.out $HOME/Project/Horus/apps"
+		exe "cs add $HOME/Horus/apps/cscope.out $HOME/Horus/apps"
+		"exe "cs add /home/kent.chen/cscope_ctag/Horus/cscope.out /home/kent.chen/Project/Horus/apps"
 	catch /duplicate/
 		silent exe "!tag_rebuild " . l:srcdir
 		silent exe "cs reset"
@@ -281,13 +282,15 @@ function! UseAwesomeCscope()
 		silent exe "!tag_rebuild " . l:srcdir
 		try
 			exe "cs add " . l:srcdir . "cscope.out " . l:srcdir
-			"exe "cs add $HOME/cscope_ctag/Horus/cscope.out $HOME/Project/Horus/apps"
+			exe "cs add $HOME/Horus/apps/cscope.out $HOME/Horus/apps"
+			"exe "cs add /home/kent.chen/cscope_ctag/Horus/cscope.out /home/kent.chen/Project/Horus/apps"
 			exe "redraw!"
 			echohl Wildmenu | echo "cscope file not found, exec tag_rebuild" | echohl None
 		catch
 			exe "redraw!"
 			echohl ErrorMsg | echo "You don't have enough privilege XD, just add Horus db." | echohl None
-			"exe "cs add $HOME/cscope_ctag/Horus/cscope.out $HOME/Project/Horus/apps"
+			exe "cs add $HOME/Horus/apps/cscope.out $HOME/Horus/apps"
+			"exe "cs add /home/kent.chen/cscope_ctag/Horus/cscope.out /home/kent.chen/Project/Horus/apps"
 		endtry
 	endtry
 endfun
