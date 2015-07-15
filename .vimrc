@@ -110,11 +110,16 @@ nmap . <C-w><
 set nocompatible               " be iMproved
 filetype off                   " required!
 
-set runtimepath+=~/.vim/vundle/
+" git clone https://github.com/gmarik/Vundle.vim.git ~/.vim/bundle/Vundle.vim
+" set the runtime path to include Vundle and initialize
+set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
+" alternatively, pass a path where Vundle should install plugins
+" call vundle#begin('~/some/path/here')
+
 " let Vundle manage Vundle
 " required! 
-Plugin 'gmarik/vundle'
+Plugin 'gmarik/Vundle.vim'
 
 " My Plugins here:
 Plugin 'Lokaltog/vim-powerline'
@@ -155,10 +160,19 @@ Plugin 'git://git.wincent.com/command-t.git'
 Plugin 'vim-scripts/DirDiff.vim'
 Plugin 'vcscommand.vim'
 
+" It uses signs to indicate added, modified or removed lines based on vcs
 Plugin 'mhinz/vim-signify'
 
 call vundle#end()  
 filetype plugin indent on     " required!
+
+" Brief help
+" " :PluginList       - lists configured plugins
+" " :PluginInstall    - installs plugins; append `!` to update or just
+" 						:PluginUpdate
+" " :PluginSearch foo - searches for foo; append `!` to refresh local cache
+" " :PluginClean      - confirms removal of unused plugins; append `!` to
+" 						auto-approve removal
 
 """"""""""""""""""""""""""""""
 " VCSCommand
