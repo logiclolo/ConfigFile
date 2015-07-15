@@ -162,6 +162,8 @@ Plugin 'vcscommand.vim'
 
 " It uses signs to indicate added, modified or removed lines based on vcs
 Plugin 'mhinz/vim-signify'
+" Tab list panel
+Plugin 'kien/tabman.vim'
 
 call vundle#end()  
 filetype plugin indent on     " required!
@@ -344,7 +346,49 @@ nmap <F12>   :TagbarToggle<CR>
 "map <F4> :NeoComplCacheEnable<CR>
 "map ,<F4> :NeoComplCacheToggle<CR>
 
+" most of them not documented because I'm not sure how they work
+" (docs aren't good, had to do a lot of trial and error to make 
+" it play nice)
+let g:neocomplcache_enable_at_startup = 1
+let g:neocomplcache_enable_ignore_case = 1
+let g:neocomplcache_enable_smart_case = 1
+let g:neocomplcache_enable_auto_select = 1
+let g:neocomplcache_enable_fuzzy_completion = 1
+let g:neocomplcache_enable_camel_case_completion = 1
+let g:neocomplcache_enable_underbar_completion = 1
+let g:neocomplcache_fuzzy_completion_start_length = 1
+let g:neocomplcache_auto_completion_start_length = 1
+let g:neocomplcache_manual_completion_start_length = 1
+let g:neocomplcache_min_keyword_length = 1
+let g:neocomplcache_min_syntax_length = 1
+" complete with workds from any opened file
+let g:neocomplcache_same_filetype_lists = {}
+let g:neocomplcache_same_filetype_lists._ = '_'
+
 """"""""""""""""""""""""""""""
 " vim-signify
 """"""""""""""""""""""""""""""
+
+" this first setting decides in which order try to guess your current vcs
+" UPDATE it to reflect your preferences, it will speed up opening files
 let g:signify_vcs_list = [ 'git', 'svn' ]
+" mappings to jump to changed blocks
+nmap <leader>sn <plug>(signify-next-hunk)
+nmap <leader>sp <plug>(signify-prev-hunk)
+" nicer colors
+highlight DiffAdd           cterm=bold ctermbg=none ctermfg=119
+highlight DiffDelete        cterm=bold ctermbg=none ctermfg=167
+highlight DiffChange        cterm=bold ctermbg=none ctermfg=227
+highlight SignifySignAdd    cterm=bold ctermbg=237  ctermfg=119
+highlight SignifySignDelete cterm=bold ctermbg=237  ctermfg=167
+highlight SignifySignChange cterm=bold ctermbg=237  ctermfg=227
+
+"""""""""""""""""""""""""""""
+" TabMan 
+""""""""""""""""""""""""""""
+
+" mappings to toggle display, and to focus on it
+let g:tabman_toggle = 'tl'
+let g:tabman_focus  = 'tf'
+
+
