@@ -34,11 +34,10 @@ set vb
 set cursorline
 syntax on
 set hlsearch
-set autoindent
 set ruler
 set showmode
-set tabstop=4
-set shiftwidth=4
+set modeline
+set autoindent
 set showmatch
 set noswapfile
 set t_Co=256 
@@ -50,7 +49,22 @@ set ignorecase
 set smartcase
 filetype plugin on
 
-" for showmarks
+""""""""""""""""""""""""
+" tab
+""""""""""""""""""""""""
+set tabstop=8		" Most OS and software consider the length of tab as 8 chars 
+set shiftwidth=8	" the shift width when pressing '>>' 
+set softtabstop=8	" replace x chars with tab, but if you press tab twice it would be a real tab
+"set expandtab		" expand tab with space
+"set noexpandtab
+
+
+
+" http://www.study-area.org/tips/vim/Vim-9.html
+
+"""""""""""""""""""""""""
+" showmarks
+"""""""""""""""""""""""""
 let g:showmarks_include='abcdefghijklmnopqrstuvwxyz' . 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'
 let g:showmarks_ignore_type="h"
 let g:showmarks_textlower="\t"
@@ -65,7 +79,9 @@ hi ShowMarksHLu ctermfg=green ctermbg=black
 hi ShowMarksHLo ctermfg=red   ctermbg=black
 hi ShowMarksHLm ctermfg=red   ctermbg=black
 
+"""""""""""""""""""""""
 " for wokmarks
+"""""""""""""""""""""""
 let g:wokmarks_do_maps = 0
 let g:wokmarks_pool = "abcdefghijklmnopqrstuvwxyz"
 map mm <Plug>ToggleMarkWok
@@ -73,18 +89,24 @@ map mj <Plug>NextMarkWok
 map mk <Plug>PrevMarkWok
 autocmd User WokmarksChange :ShowMarksOn
 
+"""""""""""""""""""""""
 " Nerdtree stuff
-nnoremap <F3> :NERDTree<CR>
+"""""""""""""""""""""""
+nnoremap <F9> :NERDTree<CR>
 
+"""""""""""""""""""""""
 " Taglist stuff
-"nnoremap <F4> :TlistToggle<CR>
+"""""""""""""""""""""""
+nnoremap <F10> :TlistToggle<CR>
 
+"""""""""""""""""""""""
 " Spell Check
+"""""""""""""""""""""""
 hi SpellBad term=underline cterm=underline ctermfg=red
 map <F5> :set spell!<CR><BAR>:echo "Spell check: " . strpart("OffOn", 3 * &spell, 3)<CR>
 
 " code_complete
-let g:completekey = "<tab><space>"   "hotkey
+" let g:completekey = <tab><space>   
 
 """"""""""""""""""
 " mapping
@@ -93,6 +115,19 @@ let mapleader=","
 nmap <silent> <leader>m :nohlsearch<CR>
 map <F6> :set cursorline!<CR><Bar>:echo "Highlight active cursor line: " . strpart("OffOn", 3 * &cursorline, 3)<CR>
 
+" insert a tab character
+"imap <Tab><Tab> <C-v><Tab>
+
+""""""""""""""""""""
+" Mouse
+""""""""""""""""""""
+set mouse=a    " if you want to copy and paste the text outside the vim, just press 'shift'
+set ttymouse=xterm2
+set pastetoggle=<F7>
+
+""""""""""""""""""""
+" Window
+""""""""""""""""""""
 " Use Ctrl+hjkl to switch between Window
 nmap <C-j> <C-w>j
 nmap <C-k> <C-w>k
@@ -102,6 +137,9 @@ nmap - <C-w>-
 nmap + <C-w>+
 nmap , <C-w>>
 nmap . <C-w><
+
+" :vsplit  create a window vertically
+" :split   create a window horizontally
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""
@@ -199,6 +237,10 @@ let g:Powerline_symbols="fancy"
 "let g:Powerline_dividers_override = [ [0x2b80], [0x003e], [0x2b82], [0x003c] ]
 "let g:Powerline_symbols='fancy'
 
+" ,s  -> show the full path of the file
+" ,ss -> return to Powerline status
+nmap <leader>s <Esc>:set statusline=%F<CR>  
+nmap <leader>ss <Esc>:set statusline=%!Pl#Statusline(0,1)<CR>      
 
 """""""""""
 " colors
