@@ -137,6 +137,7 @@ nmap - <C-w>-
 nmap + <C-w>+
 nmap , <C-w>>
 nmap . <C-w><
+set splitright
 
 " :vsplit  create a window vertically
 " :split   create a window horizontally
@@ -354,6 +355,21 @@ function! UseAwesomeCscope()
 endfun
 nnoremap <F11> <ESC>:call UseAwesomeCscope()<CR>
 
+set csprg =/usr/bin/cscope
+"set cscopequickfix=s0,c0,d0,i0,t-,e0,g0
+set cscopequickfix=s-,c-,d-,i-,t-,e-
+nnoremap <silent>qn :cnext<CR>
+nnoremap <silent>qp :cprev<CR>
+nnoremap wc       :vsplit<CR><ESC>:cs find t
+
+" :cs find s -> find symbol
+" :cs find t -> find text
+"
+" after find...
+"
+" :cw -> view the list of matches 
+" :cp -> jump to previous match
+" :cn -> jump to next match
 
 """"""""""""""""""""""""""""""
 " TagBar
