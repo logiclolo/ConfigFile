@@ -54,7 +54,7 @@ filetype plugin on
 """"""""""""""""""""""""
 set tabstop=8		" Most OS and software consider the length of tab as 8 chars 
 set shiftwidth=8	" the shift width when pressing '>>' 
-set softtabstop=8	" replace x chars with tab, but if you press tab twice it would be a real tab
+set softtabstop=8	" replace tab with x chars, but if you press tab twice it would be a real tab
 "set expandtab		" expand tab with space
 "set noexpandtab
 
@@ -234,7 +234,7 @@ set tenc=utf8
 set fenc=utf-8
 "set guifont=Consolas\ for\ Powerline\
 let g:Powerline_dividers_override = [ [0x2b80], [0x003e], [0x2b82], [0x003c] ]
-let g:Powerline_symbols="fancy"
+"let g:Powerline_symbols="fancy"
 "let g:Powerline_dividers_override = [ [0x2b80], [0x003e], [0x2b82], [0x003c] ]
 "let g:Powerline_symbols='fancy'
 
