@@ -191,8 +191,9 @@ Plugin 'majutsushi/tagbar'
 Plugin 'clang-complete'
 Plugin 'Shougo/neocomplcache'
 Plugin 'ervandew/supertab'
-Plugin 'mbbill/code_complete'
+"Plugin 'mbbill/code_complete'
 "Plugin 'vim-scripts/AutoComplPop'
+Plugin 'scrooloose/nerdcommenter'
 Plugin 'git://git.wincent.com/command-t.git'
 " ...
 " DirDiff
@@ -203,6 +204,7 @@ Plugin 'vcscommand.vim'
 Plugin 'mhinz/vim-signify'
 " Tab list panel
 Plugin 'kien/tabman.vim'
+Plugin 'Townk/vim-autoclose'
 
 call vundle#end()  
 filetype plugin indent on     " required!
@@ -233,10 +235,10 @@ set enc=utf-8
 set tenc=utf8
 set fenc=utf-8
 "set guifont=Consolas\ for\ Powerline\
+set guifont=Inconsolata\ for\ Powerline
 let g:Powerline_dividers_override = [ [0x2b80], [0x003e], [0x2b82], [0x003c] ]
-"let g:Powerline_symbols="fancy"
-"let g:Powerline_dividers_override = [ [0x2b80], [0x003e], [0x2b82], [0x003c] ]
-"let g:Powerline_symbols='fancy'
+let g:Powerline_symbols="fancy"
+
 
 " ,s  -> show the full path of the file
 " ,ss -> return to Powerline status
@@ -277,6 +279,11 @@ nmap 6 <Esc>:tabn 6<Enter>
 nmap 7 <Esc>:tabn 7<Enter>
 nmap 8 <Esc>:tabn 8<Enter>
 
+"for option key in MacOS
+nmap † <Esc>:tabnew<Enter> 
+nmap ≥ <Esc>:tabnext<Enter>
+nmap ≤ <Esc>:tabprev<Enter>
+
 
 
 
@@ -299,6 +306,10 @@ hi difftext ctermbg=3 ctermfg=0
 " WinMerge-style (Alt + hjkl) mapping for vimdiff
 nmap j ]c
 nmap k [c
+
+"for option key in MacOS
+nmap ∆ ]c
+nmap ˚ [c
 
 " Diff mode: Used to do diffput and diffget
 " Switch key mapping in Left/Right window under DiffMode
