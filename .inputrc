@@ -1,0 +1,82 @@
+# .inputrc
+# 1. List current readline function names and bindings
+#  $ bind -p
+# 2. re-read-init-file, reload .inputrc
+#  "\C-x\C-r"
+# 3. bind -x keyseq:shell-comman
+#  e.g. use "Alt+W" to exec `who`
+#  $ bind -x '"\eW":"who"'
+
+set meta-flag on
+set input-meta on
+set output-meta on
+set convert-meta off
+
+# This alters the default behavior of the completion functions.
+# If set to 'on', words which have more than one possible completion cause the matches to be listed immediately instead of ringing the bell.
+# For single press Tab results for when a partial or no completion is possible
+#set show-all-if-ambiguous on
+
+# A character denoting a file's type is appended to the filename when listing possible completions.
+set visible-stats on
+
+# Completed names which are symbolic links to directories have a slash appended (subject to the value of mark-directories).
+set mark-symlinked-directories on
+
+# When set to a value greater than zero, common prefixes longer than this value are replaced with an ellipsis when displaying possible completions.
+set completion-prefix-display-length 2
+
+# Make Tab autocomplete regardless of filename case
+set completion-ignore-case on
+
+# If there are more than 200 possible completions for a word, ask to show them all
+set completion-query-items 200
+
+# Be more intelligent when autocompleting by also looking at the text after
+# the cursor. For example, when the current line is "cd ~/src/mozil", and
+# the cursor is on the "z", pressing Tab will not autocomplete it to "cd
+# ~/src/mozillail", but to "cd ~/src/mozilla". (This is supported by the
+# Readline used by Bash 4.)
+set skip-completed-text on
+
+# Home
+"\e[1~": beginning-of-line
+"\C-g":  beginning-of-line
+"\C-a":  beginning-of-line
+# Insert
+"\e[2~": yank-nth-arg
+# Delete
+"\e[3~": delete-char
+# End
+"\e[4~": end-of-line
+# PageUp
+"\e[5~": history-search-backward
+# PageDown
+"\e[6~": history-search-forward
+
+# Ctrl + f/b : word movement
+"\C-f": forward-word
+"\C-b": backward-word
+
+# Ctrl+ <-/-> word movement
+"\e[5C": forward-word
+"\e[5D": backward-word
+"\e\e[C": forward-word
+"\e\e[D": backward-word
+
+# Ctrl + p/n : history search
+"\C-p": history-search-backward
+"\C-n": history-search-forward
+
+# Disable CTRL-S and CTRL-Q
+"\C-s": self-insert
+"\C-q": self-insert
+
+$if mode=vi
+"\C-l": clear-screen
+"\C-e": end-of-line
+$endif
+
+# Include system wide settings which are ignored
+# by default if one has their own .inputrc
+$include /etc/inputrc
