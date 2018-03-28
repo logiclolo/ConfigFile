@@ -52,10 +52,10 @@ filetype plugin on
 """"""""""""""""""""""""
 " tab
 """"""""""""""""""""""""
-set tabstop=8		" Most OS and software consider the length of tab as 8 chars 
-set shiftwidth=8	" the shift width when pressing '>>' 
-set softtabstop=8	" replace tab with x chars, but if you press tab twice it would be a real tab
-"set expandtab		" expand tab with space
+set tabstop=4		" Most OS and software consider the length of tab as 8 chars 
+set shiftwidth=4	" the shift width when pressing '>>' 
+set softtabstop=4	" replace tab with x chars, but if you press tab twice it would be a real tab
+set expandtab		" expand tab with space
 "set noexpandtab
 
 
@@ -205,6 +205,9 @@ Plugin 'mhinz/vim-signify'
 " Tab list panel
 Plugin 'kien/tabman.vim'
 Plugin 'Townk/vim-autoclose'
+
+" Vim xml
+Plugin 'othree/xml.vim'
 
 call vundle#end()  
 filetype plugin indent on     " required!
