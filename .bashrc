@@ -9,12 +9,21 @@ fi
 
 # User specific aliases and functions
 alias rm="rm -i"
-alias ls='ls --color=always'
 alias ll="ls -al"
 alias less='less -R'
 alias grep='grep --colour=auto'
 alias screenfetch='screenfetch -D "Red Hat Linux"'
 alias ack='ack -ai'
+
+if support "ls --color"; then
+    # GNU
+    alias ls='ls -FN --color=auto --time-style=long-iso'
+else
+    # OS X / BSD
+    export CLICOLOR=1
+    export LSCOLORS=ExFxCxDxBxegedabagacad
+    alias ls='ls -FG'
+fi
 #
 
 #export
